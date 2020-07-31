@@ -15,11 +15,11 @@ router.get('/', (req, res) => {
     });
 });
 //GET ONE MOVIE
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
   const queryText = `SELECT * FROM "movies"
     WHERE "title"= $1;`;
   pool
-    .query(quertyText, req.body.title)
+    .query(quertyText, req.params.id)
     .then((response) => {
       res.send(response.rows);
     })
