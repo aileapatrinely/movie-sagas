@@ -12,12 +12,13 @@ router.get('/', (req, res) => {
     })
     .catch((err) => {
       console.log('Error in ALL MOVIES get router', err);
+      res.sendStatus(500);
     });
 });
 //GET ONE MOVIE
 router.get('/:id', (req, res) => {
   const queryText = `SELECT * FROM "movies"
-    WHERE "title"= $1;`;
+    WHERE "id"= $1;`;
   pool
     .query(quertyText, req.params.id)
     .then((response) => {
@@ -25,9 +26,14 @@ router.get('/:id', (req, res) => {
     })
     .catch((err) => {
       console.log('Error in ONE MOVIE get router', err);
+      res.sendStatus(500);
     });
 });
 
 //PUT FOR SINGLE MOVIE
+router.put('/:id', (req, res) => {
+  const queryText = `UPDATE "movies" SET "`;
+  pool.query(queryText, []);
+});
 
 module.exports = router;
