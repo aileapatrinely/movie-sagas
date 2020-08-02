@@ -9,8 +9,8 @@ class MoviesList extends Component {
     });
   }
 
-  goToDetails = (event) => (item, id) => {
-    this.props.history.push(`/details/${item.id}`);
+  goToDetails = (event) => (id) => {
+    this.props.history.push(`/details/${id}`);
   };
 
   render() {
