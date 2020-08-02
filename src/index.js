@@ -21,7 +21,7 @@ function* getMoviesList(action) {
   try {
     const response = yield axios.get('/api/movies');
     yield put({
-      type: 'GET_MOVIES',
+      type: 'SET_MOVIES',
       payload: response.data,
     });
   } catch (err) {
