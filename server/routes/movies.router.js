@@ -39,7 +39,7 @@ router.put('/edit/:id', (req, res) => {
       res.sendStatus(200);
     })
     .catch((err) => {
-      res.sendStatus(500);`\
+      res.sendStatus(500);
     });
 });
 
