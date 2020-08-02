@@ -14,10 +14,10 @@ import axios from 'axios';
 
 // Create the rootSaga generator function
 function* rootSaga() {
-  yield takeEvery('GET_MOVIES', getAllMovies);
+  yield takeEvery('GET_MOVIES', getMoviesList);
 }
 // Create sagas
-function* getAllMovies(action) {
+function* getMoviesList(action) {
   try {
     const response = yield axios.get('/api/movies');
     yield put({

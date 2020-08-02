@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class MoviesList extends Component {
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'GET_MOVIES',
+    });
+  }
+
   render() {
     const moviesListArray = this.props.store.movies.map((item, index) => {
       return (
