@@ -31,9 +31,16 @@ router.get('/:id', (req, res) => {
 });
 
 //PUT FOR SINGLE MOVIE
-router.put('/:id', (req, res) => {
-  const queryText = `UPDATE "movies" SET "`;
-  pool.query(queryText, []);
+router.put('/edit/:id', (req, res) => {
+  const queryText = `UPDATE "movies" SET "title" = $1, "descriptio" = $2 WHERE "id"=$3`;
+  pool
+    .query(queryText, [req.body.title, req.body.description, req.params.id])
+    .then((response) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      res.sendStatus(500);`\
+    });
 });
 
 module.exports = router;
