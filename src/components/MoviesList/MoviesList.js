@@ -9,7 +9,7 @@ class MoviesList extends Component {
     });
   }
 
-  goToDetails = (event) => (id) => {
+  goToDetails = (id) => (event) => {
     this.props.history.push(`/details/${id}`);
   };
 
@@ -17,7 +17,11 @@ class MoviesList extends Component {
     const moviesListArray = this.props.store.movies.map((item, index) => {
       return (
         <div>
-          <img onClick={this.goToDetails(item.id)} src={item.poster} />
+          <img
+            key={item.id}
+            onClick={this.goToDetails(item.id)}
+            src={item.poster}
+          />
           <h4>{item.title}</h4>
         </div>
       );
