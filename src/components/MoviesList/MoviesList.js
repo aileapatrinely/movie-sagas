@@ -18,7 +18,7 @@ class MoviesList extends Component {
       return (
         <div>
           <img
-            key={item.id}
+            key={index}
             onClick={this.goToDetails(item.id)}
             src={item.poster}
           />

@@ -1,27 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class Details extends Component {
-  // componentDidMount() {
-  //   this.props.dispatch({
-  //     type: 'SET_GENRES',
-  //     payload: this.store.props.item.id,
-  //   });
-  // }
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'GET_DETAILS',
+      payload: this.props.store.match.params.id,
+    });
+  }
   render() {
-    // const movieItem = this.props.store.genres.map((item, index) => {
-    //   return (
-    //     <div>
-    //       <h4>{item.title}:</h4>
-    //       <h5>{item.description}</h5>
-    //       <h5>{item.genres}</h5>
-    //     </div>
-    // );
-    // });
+    const movieItem = this.props.store.currentMovie.map((item, index) => {
+      return (
+        <div>
+          <h4>{item.title}:</h4>
+          <img src={item.poster} />
+          <h5>{item.description}</h5>
+        </div>
+      );
+    });
     return (
       <div>
         <h1> Movie Details: </h1>
-        {/* <p>{movieItem}</p> */}
+
+        <p>{movieItem}</p>
       </div>
     );
   }
@@ -29,4 +31,4 @@ class Details extends Component {
 
 const mapStoreToProps = (store) => ({ store });
 
-export default connect(mapStoreToProps)(Details);
+export default withRouter(connect(mapStoreToProps)(Details));
